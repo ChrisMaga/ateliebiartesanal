@@ -1,0 +1,209 @@
+/* HOME */
+#home {
+  background-image: url("../assets/hero-banner.jpg");
+  background-size: cover;
+  background-position: bottom;
+
+  height: 50vh;
+
+  padding-top: 24px;
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  position: relative;
+  overflow: hidden;
+
+  img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    height: auto;
+    object-fit: cover;
+    object-position: bottom;
+  }
+
+  .textos-banner {
+    position: relative;
+    z-index: 2;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    padding-top: 5px;
+
+    span {
+      margin-bottom: 16px;
+
+      border: 1px solid var(--color-neutral-0);
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 50px;
+      color: var(--color-neutral-0);
+
+      background: rgba(
+        255,
+        255,
+        255,
+        0.15
+      ); /* Cor branca com muita transparência */
+      backdrop-filter: blur(10px); /* Desfoca o que estiver atrás */
+      -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+
+      i {
+        color: var(--color-neutral-0);
+      }
+    }
+
+    h1 {
+      color: var(--color-neutral-0);
+      font-family: "Play";
+      font-size: 1.5rem;
+      width: 80%;
+      text-align: center;
+      padding: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    p {
+      text-align: center;
+      color: var(--color-neutral-0);
+      width: 70%;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    }
+  }
+  .btn-banner {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+    gap: 15px;
+    margin-top: 55px;
+
+    &.show {
+      display: flex;
+    }
+    .btn-produtos {
+      padding: 10px 30px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      background-color: var(--color-primary-1);
+
+      i {
+        margin-right: 8px;
+      }
+      a {
+        text-decoration: none;
+        color: var(--color-neutral-0);
+      }
+    }
+    .btn-sobre {
+      padding: 10px 50px;
+      border: 1px solid var(--color-neutral-0);
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 50px;
+      color: var(--color-neutral-0);
+
+      background: rgba(
+        255,
+        255,
+        255,
+        0.15
+      ); /* Cor branca com muita transparência */
+      backdrop-filter: blur(10px); /* Desfoca o que estiver atrás */
+      -webkit-backdrop-filter: blur(10px);
+      a {
+        text-decoration: none;
+        color: var(--color-neutral-0);
+      }
+    }
+  }
+}
+
+#home::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 25%;
+
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.15) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(55px);
+
+  pointer-events: none;
+}
+
+/* responsividade */
+@media (min-width: 481px) and (max-width: 768px) {
+  #home {
+    .textos-banner {
+      h1 {
+        font-family: "Playfair";
+        font-size: 2em;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  #home {
+    height: 60vh;
+    background-position: center 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .btn-banner {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .textos-banner {
+      h1 {
+        color: var(--color-neutral-0);
+        font-family: "Playfair";
+        font-size: 3em;
+        width: 80%;
+        text-align: center;
+        padding: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      p {
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 200;
+        color: var(--color-neutral-0);
+        width: 70%;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+      }
+    }
+  }
+}

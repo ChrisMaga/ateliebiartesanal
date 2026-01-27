@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/styles.css">
+    <link rel="icon" type="image/png" href="./src/assets/favicon.png">
+    
+    <link rel="apple-touch-icon" href="./src/assets/favicon.png">
+    
+    <title>Ateliê Biartesanal</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar">
+            <img class="logo" src="./src/assets/logoBiartesanal.svg" alt="Logo do Ateliê Biartesanal">
+
+            <button class="btn btn-mobile">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul id="nav-links">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+                <li>
+                    <a href="#products">Produtos</a>
+                </li>
+                <li>
+                    <a href="#about">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contact">Contato</a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main id="container">
+        <!-- HOME -->
+        <section id="home">
+            <div class="textos-banner">
+                <span><i class="fa-solid fa-heart"></i>Artesanato com Fé</span>
+                <h1>Encontre Fé, Significado e Beleza em cada Peça</h1>
+                <p>Artigos religiosos feitos à mão com amor e devoção. Cada peça carrega uma história de fé e tradição
+                    para abençoar seu lar.</p>
+
+                <div class="btn-banner">
+                    <div class="btn-produtos">
+                        <i class="fa-solid fa-bag-shopping" style="color: #fbfaf8;"></i><a href="#products">Ver
+                            Produtos</a>
+                    </div>
+                    <div class="btn-sobre">
+                        <a href="#about">Conheça Minha
+                            História</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUTCS -->
+        <section id="products">
+            <div class="section-2">
+                <h2 class="tittle-3">Nossa Coleção</h2>
+                <h3 class="tittle-destac">Produtos em Destaque</h3>
+                <p class="description">Cada peça é criada com dedicação e amor, carregando significado espiritual para
+                    enriquecer sua vida de fé.</p>
+
+                <div class="carousel-wrapper">
+
+                    <button class="nav-btn prev" aria-label="Anterior">&#10094;</button>
+                    <div class="carousel" id="myCarousel">
+                        <div class="group">
+                            <div class="card"><img src="./src/gallery/imagem1.jpeg" alt=""></div>
+                            <div class="card"><img src="./src/gallery/imagem2.jpeg" alt=""></div>
+                            <div class="card"><img src="./src/gallery/imagem3.jpeg" alt=""></div>
+                            <div class="card"><img src="./src/assets/product-kit.jpg" alt=""></div>
+                            <div class="card"><img src="./src/assets/product-rosary.jpg" alt=""></div>
+                            <div class="card"><img src="./src/assets/product-statue.jpg" alt=""></div>
+                        </div>
+                        <div aria-hidden class="group">
+                            <div class="card"><img src="./src/gallery/imagem1.jpeg" alt=""></div>
+                            <div class="card"><img src="./src/gallery/imagem2.jpeg" alt=""></div>
+                            <div class="card"><img src="./src/gallery/imagem3.jpeg" alt=""></div>
+                            <div class="card"><img src="./src/assets/product-kit.jpg" alt=""></div>
+                            <div class="card"><img src="./src/assets/product-rosary.jpg" alt=""></div>
+                            <div class="card"><img src="./src/assets/product-statue.jpg" alt=""></div>
+                        </div>
+                    </div>
+
+                    <button class="nav-btn next" aria-label="Próximo">&#10095;</button>
+                </div>
+
+                <div class="indicators">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="differential">
+                <span class="span-diff-1">Por que escolher a Biartesanal?</span>
+                <h2>Diferenciais que Encantam</h2>
+
+                <div class="container-diff">
+                    <div class="diff">
+                        <div class="circulo">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+
+                        <h3>Feito à Mão</h3>
+
+                        <span class="span-diff-2">Cada peça é cuidadosamente criada por artesãos dedicados.</span>
+                    </div>
+
+                    <div class="diff">
+                        <div class="circulo">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+
+                        <h3>Significado Espiritual</h3>
+
+                        <span class="span-diff-2">Produtos que carregam fé e tradição em cada detalhe.</span>
+                    </div>
+
+                    <div class="diff">
+                        <div class="circulo">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+
+                        <h3>Personalização</h3>
+
+                        <span class="span-diff-2">Produtos que carregam fé e tradição em cada detalhe.</span>
+                    </div>
+
+                    <div class="diff">
+                        <div class="circulo">
+                            <i class="fa-regular fa-truck"></i>
+                        </div>
+
+                        <h3>Envio para o Mundo</h3>
+
+                        <span class="span-diff-2">Entregamos em todo o território nacional e internacional com muito
+                            cuidado.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about">
+                <h2>Sobre a BiArtesanal</h2>
+                <p>A BiArtesanal nasceu do amor pela fé e pela arte de criar com as mãos. Cada peça que produzo é uma
+                    expressão de devoção, cuidadosamente pensada para levar significado e beleza ao seu lar e à sua vida
+                    espiritual.</p>
+                <p>Minha missão é conectar pessoas à sua espiritualidade através de artigos religiosos únicos e
+                    personalizados. Trabalhamos com materiais de altíssima qualidade e técnicas exclusivas, preservando
+                    a essência do artesanato brasileiro.</p>
+                <p>Mais do que produtos, ofereço símbolos de fé que acompanharão você e sua família em momentos de
+                    oração, reflexão e gratidão.</p>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="contact">
+                <h3>Pronto para Fortalecer a sua Fé?</h3>
+                <span>Encontre a peça perfeita para você ou para presentear alguém especial. Cada artigo é único e
+                    carrega bênçãos em cada detalhe.</span>
+
+                <div class="btn-contact">
+                    <div class="btn-produtos">
+                        <a href="https://www.instagram.com/biartesanal/">Ver
+                            Produtos</a>
+                    </div>
+                    <div class="btn-callme">
+                        <a href="https://wa.me/5511952512903" target="_blank">Fale Comigo</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-infos">
+            <div class="biart">
+                <img src="./src/assets/logo_2.svg" alt="Logo do atelie Biartesanal">
+                <p>Artigos religiosos feitos à mão com amor e devoção. Cada peça carrega uma história de fé.</p>
+            </div>
+            <div class="category">
+                <h4>Categorias</h4>
+                <ul>
+                    <li>Terços Personalizados</li>
+                    <li>Chaveiros</li>
+                    <li>Enfeite para Portas e Carros</li>
+                </ul>
+            </div>
+            <div class="contacts">
+                <h4>Contato</h4>
+                <span class="email">ateliebiartesanal@gmail.com</span>
+
+                <!-- redes sociais -->
+                <div class="redes-sociais">
+                    <div class="circle">
+                        <a href="https://www.instagram.com/biartesanal/" target="_blank"><i
+                                class="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <div class="circle">
+                        <a href="https://www.facebook.com/biartesanal/?ref=_xav_ig_profile_page_web#" target="_blank"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                    <div class="circle">
+                        <a href="https://wa.me/5511952512903" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="linha-divisora">
+
+        <div class="footer-law">
+            <span>© 2026 BiArtesanal. Desenvolvido por <a
+                    href="https://chrismaga.github.io/portfolioCMaga/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnsivvzs7IrA1Adjy6-HGuOmwg411w1rEgJ0eFgesY6a9S7B_qgVs3GU3k2Ks_aem_46MWxpx-MOmmTwpotPSovg">
+                    CM Technology</a>. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" title="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <script src="src/js/script.js"></script>
+</body>
+
+</html>

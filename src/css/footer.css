@@ -1,0 +1,125 @@
+.footer {
+  background-color: var(--color-primary-3);
+  width: 100%;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-infos{
+  display: none;
+}
+
+.footer-law span {
+  color: var(--color-neutral-0);
+  font-weight: 200;
+  font-size: 0.5em;
+  text-align: center;
+  padding: 10px 20px 25px 20px;
+}
+
+.footer-law span a {
+  text-decoration: none;
+  color: var(--color-neutral-0);
+}
+
+/* =========================================
+   MEDIA QUERY: TELAS MAIORES (DESKTOP)
+   ========================================= */
+@media (min-width: 500px) and (max-width: 729px) {
+  .footer {
+    height: 80px;
+  }
+  .footer-law span {
+    font-size: 0.7em;
+    text-align: center;
+  }
+}
+
+@media (min-width: 730px) {
+  .footer {
+    min-height: 45vh;
+    height: auto;
+    padding: 25px 0;
+    
+  }
+
+.footer-infos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 45px;
+  width: 100%;
+  padding: 30px;
+}
+
+.biart p {
+width: 320px;
+text-align: justify;
+color: var(--color-neutral-0);
+font-size: .8em;
+font-weight: 200;
+}
+
+h4 {
+  color: var(--color-neutral-0);
+  font-weight: 500;
+}
+
+.category ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;  
+}
+
+.category ul li {
+  color: var(--color-neutral-0);
+  font-size: .8em;
+font-weight: 200;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contacts .email {
+  color: var(--color-neutral-0);
+  font-weight: 200;
+  font-size: .8em;
+}
+
+.redes-sociais {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+}
+.circle a {
+  background: rgba(255, 255, 255, 0.055); ;
+  padding: 5px 6px;
+  border-radius: 50px;
+  margin: 0.7em;
+  color: var(--color-neutral-0);
+}
+
+.linha-divisora {
+    border: 0;
+    height: 1px;
+    background-color: var(--color-primary-2);
+    margin: 30px auto;
+    width: 80%; 
+}
+
+  .footer-law span {
+    font-weight: 200;
+    font-size: 0.9em;
+    text-align: center;
+
+  }
+}
