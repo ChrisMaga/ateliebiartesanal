@@ -11,21 +11,21 @@
 .tittle-3 {
   text-transform: uppercase;
   color: var(--color-primary-2);
-  font-size: 0.7rem;
+  font-size: 1.2em;
   font-weight: 400;
   margin-top: 13px;
 }
 
 .tittle-destac {
   font-family: "Playfair";
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
 }
 
 .description {
   text-align: center;
   color: var(--color-primary-2);
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 400;
   width: 90%;
   margin-top: 5px;
@@ -151,28 +151,7 @@ opacity: 1;
 /* =========================================
    MEDIA QUERY: TELAS MAIORES (DESKTOP)
    ========================================= */
-@media (min-width: 769px) {
-  .tittle-3 {
-    text-transform: uppercase;
-    color: var(--color-primary-2);
-    font-size: 0.9rem;
-    font-weight: 400;
-    margin-top: 13px;
-  }
-
-  .tittle-destac {
-    font-family: "Playfair";
-    font-size: 2.5em;
-    font-weight: 800;
-  }
-
-  .description {
-    text-align: center;
-    color: var(--color-primary-2);
-    font-size: 1rem;
-    font-weight: 400;
-    width: 80%;
-  }
+@media screen and (max-width: 759px) {
 
   .nav-btn {
     display: flex !important; /* Força as setas a aparecerem no PC */
