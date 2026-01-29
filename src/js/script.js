@@ -1,6 +1,7 @@
+// --- MENU MOBILE ---
 const mobileBtn = document.querySelector(".btn-mobile");
-
 const navLinks = document.getElementById("nav-links");
+const links = document.querySelectorAll("#nav-links li a");
 const icon = document.querySelector(".btn-mobile i");
 
 mobileBtn.addEventListener("click", () => {
@@ -9,47 +10,86 @@ mobileBtn.addEventListener("click", () => {
   icon.classList.toggle("fa-bars");
 });
 
-// section 2
+// Fechar menu ao clicar nos links
+links.forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("show");
+    icon.classList.add("fa-bars");
+    icon.classList.remove("fa-times");
+  });
+});
+
+// --- SEÇÃO 2: CARROSSEL COM FOCO CENTRAL ---
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".carousel");
   const btnPrev = document.querySelector(".nav-btn.prev");
   const btnNext = document.querySelector(".nav-btn.next");
   const dots = document.querySelectorAll(".dot");
 
-  // Tamanho do card + gap (aproximado para o cálculo)
-  // Se o card tem 140px e o gap é 1rem (16px) = 156px
-  const cardWidth = 156;
+  const getStepWidth = () => {
+    const card = document.querySelector(".card");
+    const gap = 20;
+    return card.offsetWidth + gap;
+  };
 
-  // Função das setas
-  btnPrev.addEventListener("click", () => {
-    carousel.scrollBy({ left: -cardWidth, behavior: "smooth" });
-  });
-
+  // FUNÇÃO PRÓXIMO (Setas)
   btnNext.addEventListener("click", () => {
-    carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
+    const step = getStepWidth();
+    // Se estiver no fim, volta ao início suavemente
+    if (
+      carousel.scrollLeft + carousel.offsetWidth >=
+      carousel.scrollWidth - 10
+    ) {
+      carousel.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      carousel.scrollBy({ left: step, behavior: "smooth" });
+    }
   });
 
-  // Função para atualizar as bolinhas ao rolar (scroll spy)
+  // FUNÇÃO ANTERIOR (Setas)
+  btnPrev.addEventListener("click", () => {
+    const step = getStepWidth();
+    // Se estiver no início, vai para o fim suavemente
+    if (carousel.scrollLeft <= 10) {
+      carousel.scrollTo({ left: carousel.scrollWidth, behavior: "smooth" });
+    } else {
+      carousel.scrollBy({ left: -step, behavior: "smooth" });
+    }
+  });
+
+  // --- LOOP INFINITO PARA ARRASTO MANUAL (TOUCH) ---
   carousel.addEventListener("scroll", () => {
     const scrollLeft = carousel.scrollLeft;
-    // Calcula o índice baseado na rolagem
-    const index = Math.round(scrollLeft / cardWidth);
+    const step = getStepWidth();
+    const index = Math.round(scrollLeft / step);
 
+    // Atualiza as bolinhas
     dots.forEach((dot, i) => {
-      if (i === index) {
-        dot.classList.add("active");
-      } else {
-        dot.classList.remove("active");
-      }
+      dot.classList.toggle("active", i === index);
     });
+
+    // Lógica para o toque: se o usuário arrastar até o fim, ele "reseta" para o início
+    // (Opcional: você pode deixar o comportamento padrão de "bater no muro" no touch
+    // se preferir, mas para o loop infinito total, usamos a lógica abaixo)
+    if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth) {
+      // Pequeno delay para não interromper o movimento do dedo
+      setTimeout(() => {
+        if (
+          carousel.scrollLeft + carousel.offsetWidth >=
+          carousel.scrollWidth
+        ) {
+          carousel.scrollTo({ left: 1 }); // Volta quase ao zero para permitir novo scroll
+        }
+      }, 500);
+    }
   });
 });
 
-// botão de back to top
+// --- BOTÃO BACK TO TOP ---
 const backToTopButton = document.querySelector("#backToTop");
 
 window.addEventListener("scroll", () => {
-  // Se a rolagem passar de 300px, mostra o botão
+  // Mostra o botão após 300px de scroll
   if (window.pageYOffset > 300) {
     backToTopButton.classList.add("show");
   } else {
@@ -57,7 +97,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Ação de clique para voltar ao topo suavemente
+// Volta ao topo suavemente
 backToTopButton.addEventListener("click", () => {
   window.scrollTo({
     top: 0,

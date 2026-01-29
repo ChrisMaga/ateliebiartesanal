@@ -1,6 +1,6 @@
 /* HOME */
 #home {
-  background-image: url("../assets/hero-banner.jpg");
+  background-image: url("../assets/banner.jpg");
   background-size: cover;
   background-position: bottom;
 
@@ -136,27 +136,6 @@
   }
 }
 
-#home::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  width: 100%;
-  height: 25%;
-
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.15) 40%,
-    rgba(255, 255, 255, 0) 100%
-  );
-
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(55px);
-
-  pointer-events: none;
-}
 
 /* responsividade */
 @media (min-width: 481px) and (max-width: 768px) {
@@ -182,10 +161,16 @@
 
     .btn-banner {
       display: flex;
-      margin-top: 10px;
+      margin-top: 55px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      
     }
 
     .textos-banner {
+      i {
+        padding-right: 25px;
+      }
+      
       h1 {
         color: var(--color-neutral-0);
         font-family: "Playfair";
@@ -193,16 +178,17 @@
         width: 80%;
         text-align: center;
         padding: 15px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
       }
 
       p {
+        padding-top: 20px;
         text-align: center;
         font-size: 1.5em;
-        font-weight: 200;
+        font-weight: 400;
         color: var(--color-neutral-0);
         width: 70%;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
       }
     }
   }
