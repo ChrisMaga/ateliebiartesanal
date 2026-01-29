@@ -27,7 +27,8 @@
   color: var(--color-primary-2);
   font-size: .8rem;
   font-weight: 400;
-  width: 50%;
+  width: 90%;
+  max-width: 600px;
   margin-top: 5px;
 }
 
@@ -151,8 +152,11 @@ opacity: 1;
 /* =========================================
    MEDIA QUERY: TELAS MAIORES (DESKTOP)
    ========================================= */
-@media screen and (max-width: 759px) {
+@media screen and (min-width: 760px) {
 
+.description{
+  width: 50%;
+}
   .nav-btn {
     display: flex !important; /* Força as setas a aparecerem no PC */
     width: 55px;
