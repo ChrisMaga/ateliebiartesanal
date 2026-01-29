@@ -18,7 +18,7 @@
 
 .tittle-destac {
   font-family: "Playfair";
-  font-size: 1.8rem;
+  font-size: 1.8em;
   font-weight: 800;
 }
 
@@ -27,7 +27,7 @@
   color: var(--color-primary-2);
   font-size: .8rem;
   font-weight: 400;
-  width: 70%;
+  width: 50%;
   margin-top: 5px;
 }
 
