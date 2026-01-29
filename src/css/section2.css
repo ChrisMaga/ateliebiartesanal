@@ -11,21 +11,21 @@
 .tittle-3 {
   text-transform: uppercase;
   color: var(--color-primary-2);
-  font-size: 1em;
+  font-size: .9em;
   font-weight: 400;
   margin-top: 13px;
 }
 
 .tittle-destac {
   font-family: "Playfair";
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 800;
 }
 
 .description {
   text-align: center;
   color: var(--color-primary-2);
-  font-size: .9rem;
+  font-size: .8rem;
   font-weight: 400;
   width: 70%;
   margin-top: 5px;
