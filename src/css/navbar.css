@@ -1,31 +1,39 @@
 
 header {
   background-color: var(--color-neutral-0);
-  padding: 12px 4%;
-  position: sticky;
+  padding: 0 4%;
+  position: fixed;
+  height: 70px;
   top: 0;
-  z-index: 3;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 
     .logo {
-      width: 180px;
+      width: 150px;
     }
 
     ul {
       display: none;
       list-style: none;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 1.5rem;
       width: 100%;
       position: absolute;
       top: 70px;
       background-color: var(--color-neutral-0);
       left: 0;
-      padding: 1rem;
+      padding: 2rem 1rem;
+      box-shadow: 0 10px 10px rgba(0,0,0,0.05);
 
       &.show {
         display: flex;
@@ -51,9 +59,12 @@ header {
 }
 
 /* responsividade */
-@media screen and (min-width: 759px) {
+@media screen and (min-width: 1024px) {
   header {
     .navbar {
+      .logo {
+        width: 180px;
+      }
       .btn-mobile {
         display: none;
       }
@@ -62,11 +73,29 @@ header {
         display: flex;
         flex-direction: row;
         position: static;
-        gap: 1rem;
         width: auto;
         padding: 0;
-        gap: 50px;
+        gap: 40px;
+        box-shadow: none;
       }
     }
   }
+}
+
+/* AJUSTE PARA TABLETS / CELULARES GRANDES */
+@media screen and (max-width: 1023px) {
+    /* Garante que os cards do carrossel ocupem um espaço bom */
+    .card {
+        flex: 0 0 75vw; 
+    }
+}
+
+/* AJUSTE PARA CELULARES PEQUENOS */
+@media screen and (max-width: 480px) {
+    header .navbar .logo {
+        width: 130px;
+    }
+    .tittle-destac {
+        font-size: 1.5rem;
+    }
 }
