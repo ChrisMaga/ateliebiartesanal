@@ -12,7 +12,7 @@
 .tittle-3 {
   text-transform: uppercase;
   color: var(--color-primary-2);
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: 400;
   margin-top: 13px;
 }
@@ -26,7 +26,7 @@
 .description {
   text-align: center;
   color: var(--color-primary-2);
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 400;
   width: 90%;
   max-width: 600px;
@@ -53,7 +53,6 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding: 0 20%;
-  
 }
 
 .carousel::-webkit-scrollbar {
@@ -64,7 +63,6 @@
   display: flex;
   gap: 20px;
   animation: none !important;
-
 }
 
 .group.cloned {
@@ -77,8 +75,8 @@
   scroll-snap-align: center;
   overflow: hidden;
   border-radius: 0.3em;
-transition: all 0.3s ease;
-opacity: 1;
+  transition: all 0.3s ease;
+  opacity: 1;
 }
 
 .card img {
@@ -153,25 +151,23 @@ opacity: 1;
 /* =========================================
    MEDIA QUERY: TELAS MAIORES (DESKTOP)
    ========================================= */
-@media screen and (min-width: 760px) {
-
-.description{
-  width: 50%;
-}
+@media screen and (min-width: 769px) {
+  .description {
+    width: 50%;
+  }
   .nav-btn {
     display: flex !important; /* Força as setas a aparecerem no PC */
     width: 55px;
     height: 55px;
-
   }
 
-.nav-btn.prev {
-  left: 30px;
-}
+  .nav-btn.prev {
+    left: 30px;
+  }
 
-.nav-btn.next {
-  right: 30px;
-}
+  .nav-btn.next {
+    right: 30px;
+  }
   .indicators {
     display: flex !important; /* Mostra as bolinhas no PC */
   }
@@ -182,14 +178,21 @@ opacity: 1;
 
   .carousel {
     overflow-x: auto; /* Permite que o JS e o scroll funcionem */
-    display: flex;
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
     /* Ajuste o padding para centralizar o card (30% a 35% costuma ser ideal) */
-    padding: 0 35%; 
+    padding: 0 40% !important;
     scroll-snap-type: x mandatory;
+    gap: 30px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .group {
-    animation: none !important; /* REMOVE a animação de giro infinito */
+    margin: 0 auto;
     display: flex;
     gap: 30px; /* Espaço maior entre cards no desktop */
   }
@@ -199,10 +202,12 @@ opacity: 1;
   }
 
   .card {
-    flex: 0 0 350px; /* Largura fixa no Desktop */
-    height: 450px;   /* Altura maior para destaque */
+    flex: 0 0 350px !important; /* Largura fixa no Desktop */
+    height: 450px; /* Altura maior para destaque */
     scroll-snap-align: center;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
     opacity: 0.6; /* Deixa os das laterais mais apagadinhos */
     transform: scale(0.9);
   }

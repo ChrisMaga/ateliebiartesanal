@@ -1,21 +1,112 @@
 .footer {
   background-color: var(--color-primary-3);
+  padding: 40px 0 20px 0;
   width: 100%;
-  height: 90px;
+  text-align: center;
+  margin: 0;
+}
+
+.footer-infos {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.biart img {
+  width: 150px;
+  margin-bottom: 15px;
+}
+
+.biart p {
+  color: var(--color-neutral-0);
+  font-weight: 300;
+  font-size: 0.9em;
+}
+
+.circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: var(--color-neutral-2);
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.footer-infos{
-  display: none;
+.category,
+.contacts {
+  color: var(--color-neutral-0);
+  margin-bottom: 25px;
+}
+
+.category h4,
+.contacts h4 {
+  font-weight: 500;
+}
+
+.contacts span {
+  font-weight: 300;
+  font-size: 0.8em;
+}
+.category ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+}
+
+.category ul li {
+  color: var(--color-neutral-0);
+  font-size: 0.8em;
+  font-weight: 200;
+}
+
+.redes-sociais {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+  gap: 15px;
+}
+
+.redes-sociais span {
+  color: var(--color-neutral-0);
+  font-weight: 300;
+}
+
+.rs-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.email {
+  font-weight: 100;
+  font-size: 0.8em;
+}
+
+.circle a {
+  padding: 5px 6px;
+  border-radius: 50px;
+  margin: 0.7em;
+  color: var(--color-primary-2);
+}
+.linha-divisora {
+  border: 0;
+  height: 1px;
+  background-color: var(--color-primary-2);
+  margin: 20px auto;
+  width: 85%;
 }
 
 .footer-law span {
   color: var(--color-neutral-0);
   font-weight: 200;
-  font-size: 0.5em;
+  font-size: 0.8em;
   text-align: center;
   padding: 10px 20px 25px 20px;
 }
@@ -28,98 +119,89 @@
 /* =========================================
    MEDIA QUERY: TELAS MAIORES (DESKTOP)
    ========================================= */
-@media (min-width: 500px) and (max-width: 729px) {
-  .footer {
-    height: 80px;
-  }
-  .footer-law span {
-    font-size: 0.7em;
-    text-align: center;
-  }
-}
-
-@media (min-width: 730px) {
-  .footer {
-    min-height: 45vh;
-    height: auto;
-    padding: 25px 0;
-    
+@media screen and (min-width: 769px) {
+  .footer-infos {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
   }
 
-.footer-infos {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 45px;
-  width: 100%;
-  padding: 30px;
-}
+  .biart p {
+    width: 320px;
+    text-align: justify;
+    color: var(--color-neutral-0);
+    font-size: 0.8em;
+    font-weight: 200;
+    line-height: 1.5em;
+  }
 
-.biart p {
-width: 320px;
-text-align: justify;
-color: var(--color-neutral-0);
-font-size: .8em;
-font-weight: 200;
-}
+  h4 {
+    color: var(--color-neutral-0);
+    font-weight: 500;
+  }
 
-h4 {
-  color: var(--color-neutral-0);
-  font-weight: 500;
-}
+  .category ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5em;
+  }
 
-.category ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;  
-}
+  .category ul li {
+    color: var(--color-neutral-0);
+    font-size: 0.8em;
+    font-weight: 200;
+  }
 
-.category ul li {
-  color: var(--color-neutral-0);
-  font-size: .8em;
-font-weight: 200;
-}
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.contacts {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+  .contacts .email {
+    color: var(--color-neutral-0);
+    font-weight: 200;
+    font-size: 0.8em;
+  }
 
-.contacts .email {
-  color: var(--color-neutral-0);
-  font-weight: 200;
-  font-size: .8em;
-}
+  .redes-sociais {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2px;
+  }
 
-.redes-sociais {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2px;
-}
 .circle a {
-  background: rgba(255, 255, 255, 0.055); ;
-  padding: 5px 6px;
-  border-radius: 50px;
-  margin: 0.7em;
-  color: var(--color-neutral-0);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin: 0;
+  color: var(--color-primary-2);
+  transition: 0.3s;
+  text-decoration: none;
 }
 
-.linha-divisora {
+  .linha-divisora {
     border: 0;
     height: 1px;
     background-color: var(--color-primary-2);
     margin: 30px auto;
-    width: 80%; 
-}
+    width: 80%;
+  }
 
   .footer-law span {
     font-weight: 200;
-    font-size: 0.9em;
+    font-size: 0.7em;
     text-align: center;
-
   }
 }

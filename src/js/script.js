@@ -22,6 +22,17 @@ links.forEach((link) => {
 // --- SEÇÃO 2: CARROSSEL COM FOCO CENTRAL ---
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".carousel");
+  if (window.innerWidth > 768) {
+    carousel.scrollLeft = 0;
+  }
+  const group = document.querySelector(".group");
+
+  const cloneBefore = group.innerHTML;
+  group.insertAdjacentHTML("afterbegin", cloneBefore);
+  group.insertAdjacentHTML("beforeend", cloneBefore);
+
+  carousel.scrollLeft = carousel.offsetWidth;
+
   const btnPrev = document.querySelector(".nav-btn.prev");
   const btnNext = document.querySelector(".nav-btn.next");
   const dots = document.querySelectorAll(".dot");
@@ -102,5 +113,41 @@ backToTopButton.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth",
+  });
+});
+
+// --- CARROSSEL DE DIFERENCIAIS ---
+document.addEventListener("DOMContentLoaded", () => {
+  const carouselDiff = document.querySelector(".container-diff");
+  const btnPrevDiff = document.querySelector(".prev-diff");
+  const btnNextDiff = document.querySelector(".next-diff");
+
+  const getStepDiff = () => {
+    const cardDiff = document.querySelector(".diff");
+    const gap = 20;
+    return cardDiff.offsetWidth + gap;
+  };
+
+  btnNextDiff.addEventListener("click", () => {
+    const step = getStepDiff();
+    const maxScroll = carouselDiff.scrollWidth - carouselDiff.offsetWidth;
+
+    if (carouselDiff.scrollLeft >= maxScroll - 10) {
+      carouselDiff.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      carouselDiff.scrollBy({ left: step, behavior: "smooth" });
+    }
+  });
+
+  btnPrevDiff.addEventListener("click", () => {
+    const step = getStepDiff();
+    if (carouselDiff.scrollLeft <= 10) {
+      carouselDiff.scrollTo({
+        left: carouselDiff.scrollWidth,
+        behavior: "smooth",
+      });
+    } else {
+      carouselDiff.scrollBy({ left: -step, behavior: "smooth" });
+    }
   });
 });

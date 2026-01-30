@@ -5,7 +5,6 @@
   align-items: center;
   background-color: var(--color-neutral-2);
   padding-top: 2.5em;
-
   width: 100%;
 }
 /* differentials */
@@ -15,43 +14,83 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* padding: 20px 10px 20px 10px; */
 }
 
 .differential .span-diff-1 {
   text-transform: uppercase;
   color: var(--color-primary-2);
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 
 .differential h2 {
   font-family: "Playfair";
-  font-size: 1.5em;
+  font-size: 1.8em;
   text-align: center;
 }
 
-.container-diff {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 1em;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+.carousel-wrapper-diff {
+  position: relative;
   width: 100%;
-  margin-left: 50px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-diff::-webkit-scrollbar {
+  display: none;
+}
+
+.container-diff {
+  width: max-content;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 0 15%;
+  gap: 20px;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+}
+
+/* Setas específicas dos Diferenciais */
+.nav-btn-diff {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-2);
+}
+
+.prev-diff {
+  left: 10px;
+}
+.next-diff {
+  right: 10px;
 }
 
 .diff {
+  flex: 0 0 260px;
+  height: 300px;
+  scroll-snap-align: center;
   background-color: var(--color-neutral-0);
   border-radius: 2em;
-  padding: 1em 1em;
+  padding: 1.5em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 180px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0, 0.05);
 }
 
 .diff .circulo {
@@ -66,9 +105,10 @@
 .diff h3 {
   font-family: "Playfair";
   text-align: center;
+  font-size: 1.5em;
 }
 .span-diff-2 {
-  font-size: 0.6em;
+  font-size: 0.9em;
   text-align: center;
   color: var(--color-primary-2);
   margin-bottom: 1.5em;
@@ -99,7 +139,7 @@
 /* =========================================
    MEDIA QUERY: TELAS MAIORES (DESKTOP)
    ========================================= */
-@media (min-width: 500px) and (max-width: 768px) {
+@media screen and (min-width: 769px) {
   .differential {
     padding: 0 50px 20px 50px;
     width: 100%;
@@ -116,102 +156,43 @@
     font-size: 2em;
     text-align: center;
   }
-
-  .container-diff {
-    margin: 5px;
-    padding: 10px 50px;
-    gap: 3em;
+  .carousel-wrapper-diff {
+    overflow: visible; /* Remove o scroll */
   }
 
+  .container-diff {
+    display: grid !important; /* Volta a ser grid no PC */
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: auto !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto;
+    padding: 0 20px !important;
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+
+    overflow-x: visible !important;
+  }
+  .nav-btn-diff {
+    display: none !important;
+  }
+
+  .carousel-diff {
+    overflow: visible;
+    padding: 0;
+  }
   .diff {
-    width: 220px;
-    height: 200px;
+    flex: none !important; /* Desativa a regra do mobile */
+    width: 100% !important;
+    height: auto !important;
+    min-height: 250px;
   }
 
   .about {
     padding: 0 50px;
   }
-}
 
-@media (min-width: 769px) {
-  .differential .span-diff-1 {
-    text-transform: uppercase;
-    color: var(--color-primary-2);
-    font-size: 1em;
-  }
-
-  .differential h2 {
-    font-family: "Playfair";
-    font-size: 2.5em;
-    text-align: center;
-  }
-
-  .container-diff {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-content: center;
-    align-items: stretch;
-    grid-template-rows: auto;
-    padding: 20px;
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto 0 auto;
-  }
-
-  .diff {
-    background-color: var(--color-neutral-0);
-    border-radius: 2em;
-    padding: 2em 1.5em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 1200px;
-    height: auto;
-  }
-
-  .diff .circulo {
-    background-color: var(--color-neutral-2);
-    width: 60px; /* Tamanho fixo para garantir um círculo perfeito */
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1em;
-  }
-
-  .diff i {
-    color: var(--color-primary-2);
-    font-size: 2em;
-    align-items: center;
-  }
-
-  .diff h3 {
-    font-family: "Playfair";
-    text-align: center;
-    font-size: 1.5em;
-  }
-  .span-diff-2 {
-    font-size: 0.9em;
-    text-align: center;
-    color: var(--color-primary-2);
-    margin-bottom: 30px;
-    margin-top: 10px;
-  }
-
-    .about {
-    padding: 0 50px;
-  }
-
-  .about h2 {
-    font-size: 2em;
-    font-family: 'Playfair';
-  }
   .about p {
-    font-size: 1.3em;
+    padding: 0 400px;
   }
 }
