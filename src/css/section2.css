@@ -186,14 +186,14 @@
     display: flex !important;
     justify-content: flex-start;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     /* Ajuste o padding para centralizar o card (30% a 35% costuma ser ideal) */
-    padding: 0 40% !important;
+    padding: 0 20% !important;
     scroll-snap-type: x mandatory;
     gap: 30px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    transform: none;
   }
 
   .group {
