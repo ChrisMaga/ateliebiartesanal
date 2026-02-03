@@ -1,16 +1,17 @@
-// --- MENU MOBILE ---
+// --- SELEÇÃO DE ELEMENTOS (Cache) ---
 const mobileBtn = document.querySelector(".btn-mobile");
 const navLinks = document.getElementById("nav-links");
 const links = document.querySelectorAll("#nav-links li a");
 const icon = document.querySelector(".btn-mobile i");
+const backToTopButton = document.querySelector("#backToTop");
 
+// --- MENU MOBILE ---
 mobileBtn.addEventListener("click", () => {
   navLinks.classList.toggle("show");
   icon.classList.toggle("fa-times");
   icon.classList.toggle("fa-bars");
 });
 
-// Fechar menu ao clicar nos links
 links.forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("show");
@@ -19,101 +20,78 @@ links.forEach((link) => {
   });
 });
 
-// --- SEÇÃO 2: CARROSSEL COM FOCO CENTRAL ---
+// --- CARROSSEL PRINCIPAL (SEÇÃO 2) ---
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".carousel");
-  if (window.innerWidth > 768) {
-    carousel.scrollLeft = 0;
-  }
   const group = document.querySelector(".group");
-
-  const cloneBefore = group.innerHTML;
-  group.insertAdjacentHTML("afterbegin", cloneBefore);
-  group.insertAdjacentHTML("beforeend", cloneBefore);
-
-  carousel.scrollLeft = carousel.offsetWidth;
-
+  const dots = document.querySelectorAll(".dot");
   const btnPrev = document.querySelector(".nav-btn.prev");
   const btnNext = document.querySelector(".nav-btn.next");
-  const dots = document.querySelectorAll(".dot");
 
-  const getStepWidth = () => {
-    const card = document.querySelector(".card");
-    const gap = 20;
-    return card.offsetWidth + gap;
-  };
+  // Clonagem apenas uma vez para o loop
+  const clone = group.innerHTML;
+  group.insertAdjacentHTML("afterbegin", clone);
+  group.insertAdjacentHTML("beforeend", clone);
 
-  // FUNÇÃO PRÓXIMO (Setas)
+  // Salva o primeiro card para evitar querySelector repetitivo
+  const firstCard = document.querySelector(".card");
+  const getStepWidth = () => firstCard.offsetWidth + 20;
+
+  // Posiciona no meio inicialmente
+  carousel.scrollLeft = carousel.offsetWidth;
+
+  // Atualização das bolinhas com Performance (requestAnimationFrame)
+  let ticking = false;
+  carousel.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const step = getStepWidth();
+          const index = Math.round(carousel.scrollLeft / step) % dots.length;
+
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
+
+  // Navegação Setas
   btnNext.addEventListener("click", () => {
     const step = getStepWidth();
-    // Se estiver no fim, volta ao início suavemente
-    if (
-      carousel.scrollLeft + carousel.offsetWidth >=
-      carousel.scrollWidth - 10
-    ) {
-      carousel.scrollTo({ left: 0, behavior: "smooth" });
-    } else {
-      carousel.scrollBy({ left: step, behavior: "smooth" });
-    }
+    carousel.scrollBy({ left: step, behavior: "smooth" });
   });
 
-  // FUNÇÃO ANTERIOR (Setas)
   btnPrev.addEventListener("click", () => {
     const step = getStepWidth();
-    // Se estiver no início, vai para o fim suavemente
-    if (carousel.scrollLeft <= 10) {
-      carousel.scrollTo({ left: carousel.scrollWidth, behavior: "smooth" });
+    carousel.scrollBy({ left: -step, behavior: "smooth" });
+  });
+});
+
+// --- BOTÃO BACK TO TOP (Otimizado) ---
+window.addEventListener(
+  "scroll",
+  () => {
+    // Usamos um método mais leve para checar a posição
+    const scrollY = window.scrollY || window.pageYOffset;
+    if (scrollY > 300) {
+      if (!backToTopButton.classList.contains("show")) {
+        backToTopButton.classList.add("show");
+      }
     } else {
-      carousel.scrollBy({ left: -step, behavior: "smooth" });
+      backToTopButton.classList.remove("show");
     }
-  });
+  },
+  { passive: true },
+);
 
-  // --- LOOP INFINITO PARA ARRASTO MANUAL (TOUCH) ---
-  carousel.addEventListener("scroll", () => {
-    const scrollLeft = carousel.scrollLeft;
-    const step = getStepWidth();
-    const index = Math.round(scrollLeft / step);
-
-    // Atualiza as bolinhas
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === index);
-    });
-
-    // Lógica para o toque: se o usuário arrastar até o fim, ele "reseta" para o início
-    // (Opcional: você pode deixar o comportamento padrão de "bater no muro" no touch
-    // se preferir, mas para o loop infinito total, usamos a lógica abaixo)
-    if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth) {
-      // Pequeno delay para não interromper o movimento do dedo
-      setTimeout(() => {
-        if (
-          carousel.scrollLeft + carousel.offsetWidth >=
-          carousel.scrollWidth
-        ) {
-          carousel.scrollTo({ left: 1 }); // Volta quase ao zero para permitir novo scroll
-        }
-      }, 500);
-    }
-  });
-});
-
-// --- BOTÃO BACK TO TOP ---
-const backToTopButton = document.querySelector("#backToTop");
-
-window.addEventListener("scroll", () => {
-  // Mostra o botão após 300px de scroll
-  if (window.pageYOffset > 300) {
-    backToTopButton.classList.add("show");
-  } else {
-    backToTopButton.classList.remove("show");
-  }
-});
-
-// Volta ao topo suavemente
 backToTopButton.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 // --- CARROSSEL DE DIFERENCIAIS ---
@@ -121,17 +99,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const carouselDiff = document.querySelector(".container-diff");
   const btnPrevDiff = document.querySelector(".prev-diff");
   const btnNextDiff = document.querySelector(".next-diff");
+  const firstDiff = document.querySelector(".diff");
 
-  const getStepDiff = () => {
-    const cardDiff = document.querySelector(".diff");
-    const gap = 20;
-    return cardDiff.offsetWidth + gap;
-  };
+  if (!carouselDiff || !firstDiff) return;
+
+  const getStepDiff = () => firstDiff.offsetWidth + 20;
 
   btnNextDiff.addEventListener("click", () => {
     const step = getStepDiff();
     const maxScroll = carouselDiff.scrollWidth - carouselDiff.offsetWidth;
-
     if (carouselDiff.scrollLeft >= maxScroll - 10) {
       carouselDiff.scrollTo({ left: 0, behavior: "smooth" });
     } else {
