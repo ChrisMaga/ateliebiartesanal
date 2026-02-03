@@ -23,32 +23,28 @@ links.forEach((link) => {
 // --- CARROSSEL PRINCIPAL (SEÇÃO 2) ---
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".carousel");
-  const group = document.querySelector(".group");
   const dots = document.querySelectorAll(".dot");
   const btnPrev = document.querySelector(".nav-btn.prev");
   const btnNext = document.querySelector(".nav-btn.next");
-
-  // Clonagem apenas uma vez para o loop
-  // const clone = group.innerHTML;
-  // group.insertAdjacentHTML("afterbegin", clone);
-  // group.insertAdjacentHTML("beforeend", clone);
-
-  // Salva o primeiro card para evitar querySelector repetitivo
   const firstCard = document.querySelector(".card");
+
+  if (!carousel || !firstCard) return;
+
+  let currentActiveIndex = 0; // DECLARAÇÃO QUE FALTA
+  let ticking = false;
+
   const getStepWidth = () => firstCard.offsetWidth + 20;
 
-  // Posiciona no meio inicialmente
-  carousel.scrollLeft = carousel.offsetWidth;
-
-  // Atualização das bolinhas com Performance (requestAnimationFrame)
-  let ticking = false;
   carousel.addEventListener(
     "scroll",
     () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const step = getStepWidth();
-          if (step === 0) return;
+          if (step === 0) {
+            ticking = false;
+            return;
+          }
 
           const index = Math.round(carousel.scrollLeft / step) % dots.length;
 
@@ -60,20 +56,18 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           ticking = false;
         });
+        ticking = true; // Deve ficar aqui para bloquear novas chamadas até o frame rodar
       }
     },
     { passive: true },
   );
 
-  // Navegação Setas
   btnNext.addEventListener("click", () => {
-    const step = getStepWidth();
-    carousel.scrollBy({ left: step, behavior: "smooth" });
+    carousel.scrollBy({ left: getStepWidth(), behavior: "smooth" });
   });
 
   btnPrev.addEventListener("click", () => {
-    const step = getStepWidth();
-    carousel.scrollBy({ left: -step, behavior: "smooth" });
+    carousel.scrollBy({ left: -getStepWidth(), behavior: "smooth" });
   });
 });
 
