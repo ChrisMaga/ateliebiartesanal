@@ -20,67 +20,56 @@ links.forEach((link) => {
   });
 });
 
-// --- CARROSSEL PRINCIPAL (SEÇÃO 2) ---
+// --- CARROSSEL PRINCIPAL COM INTERSECTION OBSERVER ---
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".carousel");
   const dots = document.querySelectorAll(".dot");
+  const cards = document.querySelectorAll(".card");
   const btnPrev = document.querySelector(".nav-btn.prev");
   const btnNext = document.querySelector(".nav-btn.next");
-  const firstCard = document.querySelector(".card");
 
-  if (!carousel || !firstCard) return;
+  if (!carousel || cards.length === 0) return;
 
-  let currentActiveIndex = 0; // DECLARAÇÃO QUE FALTA
-  let ticking = false;
+  // Função para atualizar as bolinhas conforme o card visível
+  const observerOptions = {
+    root: carousel,
+    threshold: 0.6, // Ativa quando 60% do card estiver visível
+  };
 
-  const getStepWidth = () => firstCard.offsetWidth + 20;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Descobre o índice do card que entrou na tela
+        const index = Array.from(cards).indexOf(entry.target);
 
-  carousel.addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const step = getStepWidth();
-          if (step === 0) {
-            ticking = false;
-            return;
-          }
-
-          const index = Math.round(carousel.scrollLeft / step) % dots.length;
-
-          if (currentActiveIndex !== index) {
-            dots.forEach((dot, i) => {
-              dot.classList.toggle("active", i === index);
-            });
-            currentActiveIndex = index;
-          }
-          ticking = false;
+        // Atualiza as bolinhas
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
         });
-        ticking = true; // Deve ficar aqui para bloquear novas chamadas até o frame rodar
       }
-    },
-    { passive: true },
-  );
+    });
+  }, observerOptions);
+
+  cards.forEach((card) => observer.observe(card));
+
+  // Lógica dos Botões (Simples scroll lateral)
+  const getStep = () => cards[0].offsetWidth + 20;
 
   btnNext.addEventListener("click", () => {
-    carousel.scrollBy({ left: getStepWidth(), behavior: "smooth" });
+    carousel.scrollBy({ left: getStep(), behavior: "smooth" });
   });
 
   btnPrev.addEventListener("click", () => {
-    carousel.scrollBy({ left: -getStepWidth(), behavior: "smooth" });
+    carousel.scrollBy({ left: -getStep(), behavior: "smooth" });
   });
 });
 
-// --- BOTÃO BACK TO TOP (Otimizado) ---
+// --- BOTÃO BACK TO TOP ---
 window.addEventListener(
   "scroll",
   () => {
-    // Usamos um método mais leve para checar a posição
-    const scrollY = window.scrollY || window.pageYOffset;
-    if (scrollY > 300) {
-      if (!backToTopButton.classList.contains("show")) {
-        backToTopButton.classList.add("show");
-      }
+    if (window.scrollY > 300) {
+      backToTopButton.classList.add("show");
     } else {
       backToTopButton.classList.remove("show");
     }
@@ -92,7 +81,7 @@ backToTopButton.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// --- CARROSSEL DE DIFERENCIAIS ---
+// --- CARROSSEL DE DIFERENCIAIS (Lógica de loop mantida) ---
 document.addEventListener("DOMContentLoaded", () => {
   const carouselDiff = document.querySelector(".container-diff");
   const btnPrevDiff = document.querySelector(".prev-diff");
@@ -104,24 +93,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const getStepDiff = () => firstDiff.offsetWidth + 20;
 
   btnNextDiff.addEventListener("click", () => {
-    const step = getStepDiff();
     const maxScroll = carouselDiff.scrollWidth - carouselDiff.offsetWidth;
     if (carouselDiff.scrollLeft >= maxScroll - 10) {
       carouselDiff.scrollTo({ left: 0, behavior: "smooth" });
     } else {
-      carouselDiff.scrollBy({ left: step, behavior: "smooth" });
+      carouselDiff.scrollBy({ left: getStepDiff(), behavior: "smooth" });
     }
   });
 
   btnPrevDiff.addEventListener("click", () => {
-    const step = getStepDiff();
     if (carouselDiff.scrollLeft <= 10) {
       carouselDiff.scrollTo({
         left: carouselDiff.scrollWidth,
         behavior: "smooth",
       });
     } else {
-      carouselDiff.scrollBy({ left: -step, behavior: "smooth" });
+      carouselDiff.scrollBy({ left: -getStepDiff(), behavior: "smooth" });
     }
   });
 });
