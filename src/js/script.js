@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnNext = document.querySelector(".nav-btn.next");
 
   // Clonagem apenas uma vez para o loop
-  const clone = group.innerHTML;
-  group.insertAdjacentHTML("afterbegin", clone);
-  group.insertAdjacentHTML("beforeend", clone);
+  // const clone = group.innerHTML;
+  // group.insertAdjacentHTML("afterbegin", clone);
+  // group.insertAdjacentHTML("beforeend", clone);
 
   // Salva o primeiro card para evitar querySelector repetitivo
   const firstCard = document.querySelector(".card");
@@ -48,14 +48,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const step = getStepWidth();
+          if (step === 0) return;
+
           const index = Math.round(carousel.scrollLeft / step) % dots.length;
 
-          dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === index);
-          });
+          if (currentActiveIndex !== index) {
+            dots.forEach((dot, i) => {
+              dot.classList.toggle("active", i === index);
+            });
+            currentActiveIndex = index;
+          }
           ticking = false;
         });
-        ticking = true;
       }
     },
     { passive: true },

@@ -50,6 +50,8 @@
   overflow-x: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  touch-action: pan-x;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding: 0 20%;
@@ -77,8 +79,8 @@
   scroll-snap-align: center;
   overflow: hidden;
   border-radius: 0.3em;
-  transition: all 0.3s ease;
-  opacity: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
 }
 
 .card img {
